@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Javascript</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+p {
+    font-size: 25px;
+    color: blue;
+    padding: 0;
+    margin: 0;
+    padding-left: 1%;
+}
+label {
+    color: black;
+    font-size: 20px;
+}
+input {
+    height: 40px;
+    width: 100%;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+button {
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: blue;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+table {
+    color: black;
+}
+	</style>
+</head>
+<body>
+<div class="main-layout color-w font-size">
+	<div class="header-logo logo-padding">
+		<h2>JavaScript</h2>
+	</div>
+	<div class="header-menu padding-top">
+		<a href="#">Blog</a>
+		<a href="#">Services</a>
+		<a href="#">Login</a>
+		<a href="#">Signup</a>
+	</div>
+
+	<div class="content">
+		<p>HTML Form</p><br>
+		<label>First Name</label><br>
+		<input type="text" id="fname" placeholder="First Name"><br>
+		<label>Last Name</label><br>
+		<input type="text" id="lname" placeholder="Last Name"><br>
+		<button type="submit" onclick="insert()">Insert</button>
+		<button type="submit" onclick="update()">Update</button>
+		<button type="submit" onclick="_delete()">Delete</button>
+	</div>
+
+	<div class="team">
+		<p>Data Table</p>
+<table id="data_table">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  <tr>
+  	<td>Mohd</td>
+  	<td>Robel</td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+	var table = document.getElementById('data_table'), rIndex;
+	var fname = document.getElementById('fname');
+	var lname = document.getElementById('lname');
+
+	function Selected_rows() {
+		for (var i = 0; i < table.rows.length; i++) {
+				table.rows[i].onclick= function(){
+					rIndex = this.rowIndex;
+					//console.log(rIndex);
+					fname.value = this.cells[0].innerHTML;
+					lname.value = this.cells[1].innerHTML;
+				};
+			}
+			}
+			Selected_rows();
+
+			function update() {
+				table.rows[rIndex].cells[0].innerHTML = fname.value;
+				table.rows[rIndex].cells[1].innerHTML = lname.value;
+			}
+
+			function insert() {
+				var newData = table.insertRow(1);
+
+				var cell0 = newData.insertCell(0);
+				var cell1 = newData.insertCell(1);
+
+				cell0.innerHTML = fname.value;
+				cell1.innerHTML = lname.value;
+			}
+			function _delete(){
+				table.deleteRow(rIndex);
+				fname.value ="";
+				lname.value ="";
+			}
+
+
+</script>
+	</div>
+</div>
+</div>
+
+<div class="footer padding-top">
+	@Copyright 2022 by Mohd robel. All Rights Reserved.
+</div>
+<div class="author padding-top">
+	Designed by Mohd Robel
+</div>
+</div>
+</body>
+</html>
